@@ -37,6 +37,6 @@ public class Vagoes {
     //tooString
     @Override
     public String toString() {
-        return "Vagao [ID: " + idVagoes + ", Carga: " + carga + "Está livre?: "+ isLivre + "]";
+        return "Vagao [ID: " + idVagoes + ", Carga: " + carga + "Esta livre?: "+ isLivre + "]";
     }
 }

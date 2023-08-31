@@ -1,5 +1,3 @@
-package Classe;
-
 public class Locomotivas {
 
 private int idLocomotivas;

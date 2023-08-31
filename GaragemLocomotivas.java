@@ -1,4 +1,5 @@
 import java.util.Arrays;
+
 public class GaragemLocomotivas {
     public Locomotivas [] garagemLocomotivas;
     private int limiteMax;
@@ -28,6 +29,17 @@ public class GaragemLocomotivas {
             proximoSlot--;
             return locomotivaRetirada;
         }
-        
+        else{
+            System.out.println("Não existem mais locomotivas");
+            return null;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "GaragemLocomotivas{" +
+                "garagemLocomotivas=" + Arrays.toString(garagemLocomotivas) +
+                ", limiteMax=" + limiteMax +
+                '}';
     }
 }

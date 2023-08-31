@@ -2,7 +2,7 @@
 import java.util.Arrays;
 
 public class GaragemVagoes {
-    private Vagoes[] garagemVagoes;
+    public Vagoes[] garagemVagoes;
     private int proximoSlot;
     private int limiteMax;
     
@@ -41,7 +41,12 @@ public class GaragemVagoes {
         }
     }
 
-    
-
+    @Override
+    public String toString() {
+        return "GaragemVagoes{" +
+                "garagemVagoes=" + Arrays.toString(garagemVagoes) +
+                ", limiteMax=" + limiteMax +
+                '}';
+    }
     
 }
