@@ -5,7 +5,7 @@ public class GaragemTrem{
     public List<Composicao> garagemComposicaos;
 
     public GaragemTrem(){
-        garagemComposicaos = new ArrayList<>();
+        this.garagemComposicaos = new ArrayList<>();
     }
 
     public void addTrem(Composicao trem){
@@ -14,7 +14,7 @@ public class GaragemTrem{
 
     public Composicao removeDaGaragemTrem(int index){
         if(index>=0 && index<garagemComposicaos.size()){
-            return garagemComposicaos.remove(index);
+            return this.garagemComposicaos.remove(index);
         }
 
         else{
@@ -24,7 +24,7 @@ public class GaragemTrem{
     }
 
     public List<Composicao> listarComposicaos(){
-        return garagemComposicaos;
+        return this.garagemComposicaos;
     }
 
 

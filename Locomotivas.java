@@ -14,9 +14,11 @@ public Locomotivas(int idLocomotivas, double pesoMax){
 
 }
 
+/* 
 public boolean getIsEmpity(){
     return isEmpity;
 }
+*/
 
 public int getIdLocomotiva(){
     return idLocomotivas;
@@ -35,7 +37,7 @@ public void setIsEmpity(boolean novoEstado){
 
 @Override
     public String toString() {
-        return "Vagao [ID: " + idLocomotivas + ", Carga: " + pesoMax + "Está livre?: "+ isEmpity + "]";
+        return "Locomotiva [ID: " + idLocomotivas + ", Carga: " + pesoMax;
     }
 
     
