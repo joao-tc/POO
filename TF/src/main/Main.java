@@ -109,7 +109,7 @@ public class Main {
     }
 
     /*Remove composicao selecionada e libera os carros*/
-    private static void removeComp(int idComp) {
+    public static void removeComp(int idComp) {
         for(int i = 0; i < composicoes[idComp].getLen(); i++) {
             composicoes[idComp].pop();
         }

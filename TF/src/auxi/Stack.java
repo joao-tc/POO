@@ -92,6 +92,11 @@ public class Stack { // Nessa classe foi criado um sistema de stack com as regra
     public void pop() {
         top--;
 
+        if(top <= 0) {
+            top++;
+            return;
+        }
+
         if(this.stack[top] instanceof Vagao) {
             nVagao--;
         } else {
@@ -100,6 +105,7 @@ public class Stack { // Nessa classe foi criado um sistema de stack com as regra
 
         this.stack[top].setIdComp(-1);
         this.stack[top].setIsFree(true);
+        this.stack[top] = null;
     }
 
     /*Setter*/

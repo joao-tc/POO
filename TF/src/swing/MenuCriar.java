@@ -59,6 +59,11 @@ public class MenuCriar extends javax.swing.JFrame {
         jTextAreaCompAtual = new javax.swing.JTextArea();
         javax.swing.JLabel jLabel5 = new javax.swing.JLabel();
         jButtonRemove = new javax.swing.JButton();
+        jButtonRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoveActionPerformed(evt);
+            }
+        });
 
         jScrollPane4.setViewportView(jEditorPane1);
 
@@ -236,7 +241,12 @@ public class MenuCriar extends javax.swing.JFrame {
         aux.setLocationRelativeTo(this);
         aux.setVisible(true);
         this.dispose();
-    }                                           
+    }                       
+    
+    private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {
+        Main.composicoes[Main.editIdComp].pop();
+        refresh();
+    }
 
     private void jTextFieldVagoesActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
