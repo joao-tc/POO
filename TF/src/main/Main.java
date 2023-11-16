@@ -2,11 +2,15 @@ package main;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import auxi.Carro;
 import auxi.Leitor;
 import auxi.Stack;
 
 import swing.Menu;
+import swing.MenuCriar;
+import swing.MenuListar;
 
 public class Main {
 
@@ -21,9 +25,17 @@ public class Main {
         private static Garagem<Locomotiva> locomotivas;
         private static Garagem<Vagao> vagoes;
 
+
+        public static Menu menu;
+        public static MenuCriar menuCriar;    
+        public static MenuListar menuListar;    
+
     /*Main*/
     public static void main(String[] args) {
-        Menu.start();
+        menu = new Menu();
+        menuCriar = new MenuCriar();
+        menuListar = new MenuListar();
+        menu.start();
 
         composicoes = new Stack[10];
         locomotivas = new Garagem<Locomotiva>();
@@ -91,6 +103,7 @@ public class Main {
         composicoes[editIdComp] = new Stack(editIdComp);
         composicoes[editIdComp].push(locomotivas.get(id));
         nComposicoes++;
+        menuCriar.refresh();
     }
 
     /*Edita composicao selecionada*/
@@ -106,17 +119,23 @@ public class Main {
 
         composicoes[idComp].push(currCarro);
         
+        menuCriar.refresh();
     }
 
     /*Remove composicao selecionada e libera os carros*/
     public static void removeComp(int idComp) {
-        for(int i = 0; i < composicoes[idComp].getLen(); i++) {
+        try {
+            for(int i = 0; i < composicoes[idComp].getLen(); i++) {
             composicoes[idComp].pop();
         }
         nComposicoes--;
         composicoes[idComp] = null;
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "ID inválido", null, JOptionPane.INFORMATION_MESSAGE);
+        }
+        
 
-        //menu();
+        menuListar.refresh();
     }
 
     /*Cria garagens com classe generica*/
@@ -124,7 +143,7 @@ public class Main {
         ArrayList<String> aux = new ArrayList<String>();
         aux = Leitor.readFile(aux, "Garagem.txt");
         if(aux == null) {
-            System.out.println("Erro ao ler arquivo! (Garagem)");
+            System.out.println("Erro ao ler arquivo! (Garagem.txt)");
             return;
         }
 
@@ -145,6 +164,11 @@ public class Main {
     private static void initComposicoes() {
         ArrayList<String> data = new ArrayList<String>();
         data = Leitor.readFile(data, "Composicoes.txt");
+        if(data == null) {
+            System.out.println("Erro ao ler arquivo! (Composicoes.txt)");
+            return;
+        }
+
         int comp = -1;
         int index = 0;
 

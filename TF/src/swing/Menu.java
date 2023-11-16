@@ -131,23 +131,22 @@ public class Menu extends javax.swing.JFrame {
     private void jButtonNovaCompActionPerformed(java.awt.event.ActionEvent evt) {                                                
         Main.editIdComp = Main.firstFree();
         Main.startComp(Main.firstLocFree());
-        MenuCriar aux = new MenuCriar();
-        aux.setLocationRelativeTo(this);
-        aux.setVisible(true);
-        aux.refresh();
-        this.dispose();
+        
+        Main.menuCriar.setLocationRelativeTo(this);
+        Main.menuCriar.refresh();
+        Main.menuCriar.setVisible(true);
+        this.setVisible(false);
     }                                               
 
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        MenuListar aux = new MenuListar();
-        aux.setLocationRelativeTo(this);
-        aux.setVisible(true);
-        aux.refresh();
-        this.dispose();
+        Main.menuListar.setLocationRelativeTo(this);
+        Main.menuListar.setVisible(true);
+        Main.menuListar.refresh();
+        this.setVisible(false);
     }                                             
 
 
-    public static void start() {
+    public void start() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Menu().setVisible(true);

@@ -1,6 +1,7 @@
 package auxi;
 
 import main.Locomotiva;
+import main.Main;
 import main.Vagao;
 
 public class Stack { // Nessa classe foi criado um sistema de stack com as regras para criacao de novos trens
@@ -60,7 +61,7 @@ public class Stack { // Nessa classe foi criado um sistema de stack com as regra
                 c.setIdComp(this.idComp);
                 top++;
             } else {
-                System.out.println("Não foi possivel adicionar outra locomotiva!");
+                Main.menuCriar.newAlert(1);
                 try {
                     Thread.sleep(1500);
                 } catch (Exception e) {
@@ -78,7 +79,7 @@ public class Stack { // Nessa classe foi criado um sistema de stack com as regra
                 lastLocomotiva = false;
                 top++;
             } else {
-                System.out.println("Não foi possivel adicionar outro vagão!");
+                Main.menuCriar.newAlert(0);
                 try {
                     Thread.sleep(1500);
                 } catch (Exception e) {
@@ -106,6 +107,10 @@ public class Stack { // Nessa classe foi criado um sistema de stack com as regra
         this.stack[top].setIdComp(-1);
         this.stack[top].setIsFree(true);
         this.stack[top] = null;
+
+        if(nVagao == 0) {
+            lastLocomotiva  = true;
+        }
     }
 
     /*Setter*/

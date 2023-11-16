@@ -1,5 +1,7 @@
 package swing;
 
+import javax.swing.JOptionPane;
+
 import main.Main;
 
 /*
@@ -233,35 +235,35 @@ public class MenuCriar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        setTitle("Trabalho Final POO");
         pack();
     }// </editor-fold>                        
 
-    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        Menu aux = new Menu();
-        aux.setLocationRelativeTo(this);
-        aux.setVisible(true);
-        this.dispose();
-    }                       
-    
     private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {
         Main.composicoes[Main.editIdComp].pop();
         refresh();
     }
-
+    
     private void jTextFieldVagoesActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
     }                                                
-
+    
     private void jTextFieldLocomotivasActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
-    }                                                     
+    }
+
+    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        Main.menu.setLocationRelativeTo(this);
+        Main.menu.setVisible(true);
+        this.setVisible(false);
+    }                       
+    
 
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        MenuListar aux = new MenuListar();
-        aux.setLocationRelativeTo(this);
-        aux.setVisible(true);
-        aux.refresh();
-        this.dispose();
+        Main.menuListar.setLocationRelativeTo(this);
+        Main.menuListar.setVisible(true);
+        Main.menuListar.refresh();
+        this.setVisible(false);
     }                                                                                       
 
     /**
@@ -327,11 +329,26 @@ public class MenuCriar extends javax.swing.JFrame {
         refresh();
     }
 
+    public void newAlert(int tipo) {
+        String sTipo;
+        if(tipo == 0) {
+            sTipo = "Vagão";
+        } else {
+            sTipo = "Locomotiva";
+        }
+        JOptionPane.showMessageDialog(null, "Não foi possivel adicionar " + sTipo, "", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public void refresh() {
         jTextAreaLocomotivas.setText(Main.printLocomotivas());
         jTextAreaVagoes.setText(Main.printVagoes());
-        jTextAreaCompAtual.setText(Main.composicoes[Main.editIdComp].toString() + "\n" +
+        try {
+            jTextAreaCompAtual.setText(Main.composicoes[Main.editIdComp].toString() + "\n" +
                 Main.composicoes[Main.editIdComp].totostring());
+        } catch (Exception e) {
+
+        }
+        
     }
 
     // Variables declaration - do not modify                     

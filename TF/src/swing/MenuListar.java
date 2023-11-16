@@ -1,5 +1,7 @@
 package swing;
 
+import javax.swing.JOptionPane;
+
 import main.Main;
 
 /*
@@ -33,6 +35,9 @@ public class MenuListar extends javax.swing.JFrame {
         jButtonMenu = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaListar = new javax.swing.JTextArea();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+        jTextFieldIdComp = new javax.swing.JTextField();
+        jButtonExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 350));
@@ -78,10 +83,18 @@ public class MenuListar extends javax.swing.JFrame {
         );
 
         jTextAreaListar.setEditable(false);
-        jTextAreaListar.setColumns(23);
+        jTextAreaListar.setColumns(21);
         jTextAreaListar.setRows(5);
-        jTextAreaListar.setText(Main.printComposicoes());
         jScrollPane1.setViewportView(jTextAreaListar);
+
+        jLabel1.setText("ID:");
+
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,16 +103,29 @@ public class MenuListar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldIdComp, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonExcluir)
+                        .addGap(19, 19, 19)))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldIdComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonExcluir))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -108,10 +134,10 @@ public class MenuListar extends javax.swing.JFrame {
     private void jButtonNovaCompActionPerformed(java.awt.event.ActionEvent evt) {                                                
         Main.editIdComp = Main.firstFree();
         Main.startComp(Main.firstLocFree());
-        MenuCriar aux = new MenuCriar();
-        aux.setLocationRelativeTo(this);
-        aux.setVisible(true);
-        aux.refresh();
+        
+        Main.menuCriar.setLocationRelativeTo(this);
+        Main.menuCriar.refresh();
+        Main.menuCriar.setVisible(true);
         this.dispose();
     }                                               
 
@@ -121,6 +147,19 @@ public class MenuListar extends javax.swing.JFrame {
         aux.setVisible(true);
         this.dispose();
     }                                           
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        int idComp;
+        try {
+            idComp = Integer.parseInt(jTextFieldIdComp.getText());
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "ID inválido", "", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        jTextFieldIdComp.setText("");
+        Main.removeComp(idComp);
+    }                                              
 
     /**
      * @param args the command line arguments
@@ -162,10 +201,12 @@ public class MenuListar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
+    private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonMenu;
     private javax.swing.JButton jButtonNovaComp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaListar;
+    private javax.swing.JTextField jTextFieldIdComp;
     // End of variables declaration                   
 }
