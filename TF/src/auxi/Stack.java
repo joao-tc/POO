@@ -62,11 +62,6 @@ public class Stack { // Nessa classe foi criado um sistema de stack com as regra
                 top++;
             } else {
                 Main.menuCriar.newAlert(1);
-                try {
-                    Thread.sleep(1500);
-                } catch (Exception e) {
-                    // TODO: handle exception
-                }
             }
         } else if(c instanceof Vagao){ // Adiciona novo vagao seguindo as regras
             double pesoAt = ((Vagao) c).getPesoMax();
@@ -80,11 +75,6 @@ public class Stack { // Nessa classe foi criado um sistema de stack com as regra
                 top++;
             } else {
                 Main.menuCriar.newAlert(0);
-                try {
-                    Thread.sleep(1500);
-                } catch (Exception e) {
-                    // TODO: handle exception
-                }
             }
         }
     }
