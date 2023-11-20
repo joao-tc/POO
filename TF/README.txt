@@ -18,4 +18,4 @@ Como utilizar o programa:
 
 2) Não deixe linhas em branco;
 
-3) As demais interações com o programa devem ser feitos pelo console.
+3) As demais interações com o programa devem ser feitos pela GUI.
