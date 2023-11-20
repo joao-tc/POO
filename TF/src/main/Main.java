@@ -125,17 +125,17 @@ public class Main {
     /*Remove composicao selecionada e libera os carros*/
     public static void removeComp(int idComp) {
         try {
-            for(int i = 0; i < composicoes[idComp].getLen(); i++) {
+            for(int i = 0; i <= composicoes[idComp].getLen(); i++) {
             composicoes[idComp].pop();
         }
         nComposicoes--;
         composicoes[idComp] = null;
+        menuListar.refresh();
+        
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, "ID inválido", null, JOptionPane.INFORMATION_MESSAGE);
         }
         
-
-        menuListar.refresh();
     }
 
     /*Cria garagens com classe generica*/

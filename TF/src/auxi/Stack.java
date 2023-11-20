@@ -83,7 +83,7 @@ public class Stack { // Nessa classe foi criado um sistema de stack com as regra
     public void pop() {
         top--;
 
-        if(top <= 0) {
+        if(top < 0) {
             top++;
             return;
         }
@@ -121,7 +121,7 @@ public class Stack { // Nessa classe foi criado um sistema de stack com as regra
         int len = 0;
         for(int i = 0; i < stack.length; i++) {
             if(stack[i] == null) {
-                break;
+                continue;
             } else {
                 len++;
             }

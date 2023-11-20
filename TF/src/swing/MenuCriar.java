@@ -239,10 +239,6 @@ public class MenuCriar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {
-        Main.composicoes[Main.editIdComp].pop();
-        refresh();
-    }
     
     private void jTextFieldVagoesActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
@@ -251,13 +247,18 @@ public class MenuCriar extends javax.swing.JFrame {
     private void jTextFieldLocomotivasActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
     }
-
+    
     private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {                                            
         Main.menu.setLocationRelativeTo(this);
         Main.menu.setVisible(true);
         this.setVisible(false);
     }                       
     
+    private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {
+        if(Main.composicoes[Main.editIdComp].getLen() > 1)
+            Main.composicoes[Main.editIdComp].pop();
+        refresh();
+    }
 
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {                                              
         Main.menuListar.setLocationRelativeTo(this);
@@ -265,41 +266,6 @@ public class MenuCriar extends javax.swing.JFrame {
         Main.menuListar.refresh();
         this.setVisible(false);
     }                                                                                       
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu().setVisible(true);
-            }
-        });
-    }
 
     private void jButtonAddLocomotivasActionPerformed(java.awt.event.ActionEvent evt) {
         int id;
