@@ -1,4 +1,4 @@
-Trabalho 2 - Programação Orientada a Objetos - Turma 12
+Trabalho Final - Programação Orientada a Objetos - Turma 12
 
 Como utilizar o programa:
 
